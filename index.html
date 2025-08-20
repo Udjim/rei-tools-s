@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Установщик закладки</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      position: relative;
+      text-align: center;
+      color: #333;
+      overflow: hidden;
+    }
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" filter="url(%23noise)"/></svg>');
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @media (min-width: 481px) {
+      body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.25) 100%);
+        z-index: 1;
+      }
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #222;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+    .category {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px) saturate(180%) contrast(90%);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 360px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      z-index: 2;
+    }
+    .category h2 {
+      margin-top: 0;
+      font-size: 1.3em;
+      color: #007bff;
+    }
+    .bookmarklet {
+      display: block;
+      padding: 16px 28px;
+      background-color: #ff5722;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+      font-size: 1.1em;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      animation: pulseMove 2s infinite;
+      cursor: grab;
+      z-index: 2;
+    }
+    .bookmarklet:active {
+      cursor: grabbing;
+    }
+    .bookmarklet:hover {
+      background-color: #e64a19;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,87,34,0.7);
+      animation: none;
+    }
+    @keyframes pulseMove {
+      0% { box-shadow: 0 0 0 rgba(255,87,34,0.5); transform: translateY(0); }
+      25% { transform: translateY(-3px); box-shadow: 0 0 10px rgba(255,87,34,0.7); }
+      50% { transform: translateY(0); box-shadow: 0 0 0 rgba(255,87,34,0.5); }
+      75% { transform: translateY(-3px); box-shadow: 0 0 10px rgba(255,87,34,0.7); }
+      100% { transform: translateY(0); box-shadow: 0 0 0 rgba(255,87,34,0.5); }
+    }
+    p {
+      max-width: 500px;
+      font-size: 1em;
+      color: #444;
+      z-index: 2;
+    }
+    .footer {
+      font-size: 0.9em;
+      color: #666;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .category {
+        padding: 10px 12px;
+      }
+      .bookmarklet {
+        padding: 12px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<h1>Перетащите нужную кнопку на панель закладок</h1>
+<div class="category">
+  <h2>Smarter Contact</h2>
+  <a class="bookmarklet" href="javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/udjim/rei-tools-s@main/sc-export.js?v='+Date.now();document.body.appendChild(s);})();">
+    Экспорт в REISift
+  </a>
+</div>
+<p>Затем нажмите на неё в закладках, чтобы использовать скрипт на нужной странице.</p>
+<div class="footer">Eugenz 2025</div>
+</body>
+</html>
